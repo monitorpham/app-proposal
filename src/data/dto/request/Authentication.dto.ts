@@ -1,0 +1,23 @@
+export interface PostSignIn {
+    phone: string,
+    password: string
+}
+
+export interface PostGoogleAuth {
+    email: string,
+    ggid: string
+    name: string
+}
+
+export interface PostSignUp {
+    phone: string,
+    name: string
+    password: string
+}
+
+export interface PostProfileUpdating {
+    userId: string,
+    email: string,
+    name: string
+    password?: string
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "701622032649",
+    "firebase_url": "https://payment-4e309.firebaseio.com",
+    "project_id": "payment-4e309",
+    "storage_bucket": "payment-4e309.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701622032649:android:dc9f1d92ad703c6b5e5bd8",
+        "android_client_info": {
+          "package_name": "com.payment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701622032649-eeagp1ub417eoscq65l6bai410d0iivg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGIpmp09bY4zGZ4mNhNtGDWSpNRIIY-ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701622032649-eeagp1ub417eoscq65l6bai410d0iivg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "701622032649-ipa69hgsa8greklc6or1kciusbdn7kms.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Payment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,1 @@
+export type FetchStatus = 'INIT' | 'FETCHING' | 'SUCCESS' | 'FAILED'
