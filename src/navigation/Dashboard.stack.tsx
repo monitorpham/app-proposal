@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { Dashboard, Wallet, Recharge, Order, AgencyMap, Booking, History } from '@module';
+import { Dashboard, History } from '@module';
 
 const Stack = createStackNavigator();
 
@@ -11,7 +11,8 @@ export type DashboardStackParams = {
     Order: { orderId: string },
     AgencyMap: undefined,
     Booking: { agencyId: string },
-    History: undefined
+    History: undefined,
+    Proposal: undefined
 }
 
 export const DashboardStack: React.FC = () => {
@@ -22,26 +23,6 @@ export const DashboardStack: React.FC = () => {
             <Stack.Screen
                 component={Dashboard}
                 name='Dashboard'
-            />
-            <Stack.Screen
-                component={Wallet}
-                name='Wallet'
-            />
-            <Stack.Screen
-                component={Recharge}
-                name='Recharge'
-            />
-            <Stack.Screen
-                component={Order}
-                name='Order'
-            />
-            <Stack.Screen
-                component={AgencyMap}
-                name='AgencyMap'
-            />
-            <Stack.Screen
-                component={Booking}
-                name='Booking'
             />
             <Stack.Screen
                 component={History}

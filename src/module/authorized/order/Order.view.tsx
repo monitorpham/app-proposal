@@ -6,7 +6,7 @@ import { OrderProps } from './Order.type'
 import { OrderStyles } from './Order.style'
 import { AssetIcons, BannerAssets } from '@assets'
 import { Divider, ButtonGroup } from 'react-native-elements'
-import { PaymentTypeSelector } from './PaymentTypeSelector'
+// import { PaymentTypeSelector } from './PaymentTypeSelector'
 import { responsiveHeight } from 'react-native-responsive-dimensions'
 import { SizeDimens } from '@res'
 import { LazyNavigationScreen } from '@layout'
@@ -25,7 +25,7 @@ export const Order: React.FC<OrderProps> = (props) => {
     const renderInfomation = React.useMemo(() => {
         return (
             <>
-                <KeyValueText
+                {/* <KeyValueText
                     title='Tên khách hàng : '
                     value={user?.name}
                 />
@@ -33,7 +33,7 @@ export const Order: React.FC<OrderProps> = (props) => {
                     containerStyle={OrderStyles.keyValue}
                     title='Số điện thoại : '
                     value={user?.optionalPhone}
-                />
+                /> */}
                 <KeyValueText
                     containerStyle={OrderStyles.keyValue}
                     title='Địa chỉ : '
@@ -72,9 +72,9 @@ export const Order: React.FC<OrderProps> = (props) => {
                     />
                     <Divider style={OrderStyles.divider} />
                     {renderInfomation}
-                    <PaymentTypeSelector
+                    {/* <PaymentTypeSelector
                         containerStyle={OrderStyles.paymentType}
-                    />
+                    /> */}
                     <Button
                         buttonStyle={{ height: SizeDimens.mdInput }}
                         containerStyle={OrderStyles.button}

@@ -1,4 +1,6 @@
 import { OrderDatasource } from './../data/remote/datasource/OrderDatasource';
+import { ProposalDatasource } from './../data/remote/datasource/ProposalDatasource';
+
 import { ApiProvider, AuthenticationDatasource, UserDatasource } from '@data';
 
 export class ApiModule {
@@ -20,12 +22,15 @@ export class ApiModule {
 
     orderDatasource: OrderDatasource
 
+    proposalDatasource: ProposalDatasource
+
     constructor() {
         this.apiProvider = new ApiProvider({
-            baseURL: 'http://chap.com.vn/payment/api/'
+            baseURL: 'https://deploy-proposal.herokuapp.com/api/'
         })
         this.authenticationDatasource = new AuthenticationDatasource(this.apiProvider)
         this.userDatasource = new UserDatasource(this.apiProvider)
         this.orderDatasource = new OrderDatasource(this.apiProvider)
+        this.proposalDatasource = new ProposalDatasource(this.apiProvider)
     }
 }

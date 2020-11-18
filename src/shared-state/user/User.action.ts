@@ -60,16 +60,16 @@ export const UserActions = {
             setState({ updateProfileStatus: 'FAILED' })
         }
     },
-    updateAvatar: (
-        image: Image
-    ) => async ({ setState, getState, dispatch }: UserStoreApi) => {
-        const { user } = getState()
-        if (!user) return
-        const result = await ApiModule.shared().userDatasource.updateAvatar(user.id, image)
-        if (result.isSuccess) {
-            dispatch(UserActions.getProfile())
-        }
-    },
+    // updateAvatar: (
+    //     image: Image
+    // ) => async ({ setState, getState, dispatch }: UserStoreApi) => {
+    //     const { user } = getState()
+    //     if (!user) return
+    //     const result = await ApiModule.shared().userDatasource.updateAvatar(user.id, image)
+    //     if (result.isSuccess) {
+    //         dispatch(UserActions.getProfile())
+    //     }
+    // },
     getProfile: () => async ({ setState, getState }: UserStoreApi) => {
         const { user } = getState()
         if (!user) return

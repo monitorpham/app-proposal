@@ -8,14 +8,13 @@ import { SignInStyles } from './SignIn.style'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { AssetBackground, AssetIcons, BannerAssets } from '@assets'
 import { Colors, TextStyles, SizeDimens } from '@res';
-import { GoogleAuth } from '@thirdparty'
 import { useUser } from '@shared-state'
 
 export const SignIn: React.FC<SignInProps> = (props) => {
     const [state, action] = useSignIn()
     const [_, userAction] = useUser()
 
-    const [phone, setPhone] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     React.useEffect(() => {
         return action.reset
@@ -24,26 +23,21 @@ export const SignIn: React.FC<SignInProps> = (props) => {
     React.useEffect(() => {
         if (state.user) {
             userAction.setUser(state.user)
+            console.log(state.user)
         }
     }, [state.user])
 
-    const googleAuth = React.useCallback(async () => {
-        const result = await GoogleAuth.auth()
-        if (result.isSucess) {
-            action.googleAuth(result)
-        }
-    }, [])
     const signIn = React.useCallback(() => {
-        action.signIn(phone, password)
-    }, [phone, password])
+        action.signIn(username, password)
+    }, [username, password])
 
-    const goToSignUp = React.useCallback(() => {
-        props.navigation.navigate('SignUp')
-    }, [])
+    // const goToSignUp = React.useCallback(() => {
+    //     props.navigation.navigate('SignUp')
+    // }, [])
 
-    const goForgotPassword = React.useCallback(() => {
-        props.navigation.navigate('ForgotPassword')
-    }, [])
+    // const goForgotPassword = React.useCallback(() => {
+    //     props.navigation.navigate('ForgotPassword')
+    // }, [])
 
     const renderAppName = React.useMemo(() => {
         return (
@@ -55,8 +49,8 @@ export const SignIn: React.FC<SignInProps> = (props) => {
         return (
             <>
                 <InputField
-                    value={phone}
-                    onChangeText={setPhone}
+                    value={username}
+                    onChangeText={setUsername}
                     activeIcon={AssetIcons.BLUE_ACCOUNT}
                     defaultIcon={AssetIcons.GRAY_ACCOUNT}
                     inputProps={{
@@ -77,7 +71,7 @@ export const SignIn: React.FC<SignInProps> = (props) => {
                 />
             </>
         )
-    }, [phone, password])
+    }, [username, password])
 
     const renderSocialButton = React.useMemo(() => {
         return (
@@ -121,7 +115,7 @@ export const SignIn: React.FC<SignInProps> = (props) => {
                     text='Xác thực tài khoản mới'
                 >
                     <TextView
-                        onPress={goToSignUp}
+                        // onPress={goToSignUp}
                         style={SignInStyles.signUpLink}
                         text=' tại đây'
                     ></TextView>
@@ -137,7 +131,7 @@ export const SignIn: React.FC<SignInProps> = (props) => {
                 /> */}
             </View>
         )
-    }, [phone, password])
+    }, [username, password])
 
     return (
         <ImageBackground

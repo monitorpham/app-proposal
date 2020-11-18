@@ -1,0 +1,29 @@
+export interface EProposal {
+    id: number;
+    contentProposal: String;
+    Group: String;
+    startDate: String;
+    endDate: String;
+    hospitalDepartment: String;
+    hospitalDepartmentId: number;
+    currentProgressName: String;
+    registerBy: "Admin";
+    note: String;
+    remainingDate: Date
+    additionalDate: Date
+    deadLine: String
+    status: any
+    asignee: String
+    asigneeId: number;
+
+    // public convertDate(dateString: String) {
+    //     if (dateString) {
+    //         let arr = dateString.split('T')
+    //         let temp = arr[0].toString()
+    //         let arr2 = temp.split('-')
+    //         // debugger;
+    //         return arr2[2] + '-' + arr2[1] + '-' + arr2[0]
+    //     }
+    //     return ''
+    // }
+}

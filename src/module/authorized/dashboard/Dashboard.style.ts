@@ -1,7 +1,6 @@
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import { StyleSheet } from 'react-native';
 import { Colors } from '@res';
-import { WalletHeight } from './Wallet';
 
 export const DashboardStyles = StyleSheet.create({
     container: {
@@ -11,11 +10,6 @@ export const DashboardStyles = StyleSheet.create({
     content: {
         marginTop: -responsiveWidth(3),
         zIndex: -1
-    },
-    wallet: {
-        marginTop: - WalletHeight * 0.5,
-        width: '50%',
-        marginLeft: 16
     },
     buttonsContainer: {
         height: responsiveHeight(20),

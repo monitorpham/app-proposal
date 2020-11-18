@@ -12,20 +12,18 @@ import { ProfileInfomationValidators } from '@util'
 import { SizeDimens, FontSizeDimens } from '@res'
 
 type FormErrors = {
-    name?: string,
-    phone?: string,
+    username?: string,
     password?: string,
     email?: string
 }
 
-const isUpdatable = (phone?: string, password?: string, name?: string, email?: string) => {
+const isUpdatable = (username?: string, password?: string, name?: string, email?: string) => {
     const errors = {
-        phone: ProfileInfomationValidators.phone(phone) ? '' : 'Số điện thoại không đúng định dạng',
+        username: ProfileInfomationValidators.username(username) ? '' : 'Tên đăng nhập không đúng định dạng',
         password: ProfileInfomationValidators.password(password, true) ? '' : 'Mật khẩu phải lớn hơn hoặc bằng 6 kí tự',
-        name: ProfileInfomationValidators.name(name) ? '' : 'Tên là trường bắt buộc',
         email: ProfileInfomationValidators.email(email ?? '') ? '' : 'Email không đúng định dạng',
     }
-    const valid = !errors.password && !errors.name && !errors.email
+    const valid = !errors.username && !errors.password && !errors.email
     return { valid, errors }
 }
 
@@ -33,54 +31,46 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
     const [state, action] = usePersonalInfomation()
     const [{ user, updateProfileStatus, getProfileStatus, removeUserFromStoreageStatus }, userAction] = useUser()
 
-    const [phone, setPhone] = useState(user?.phone ?? '')
-    const [name, setName] = useState(user?.name ?? '')
+    const [username, setUsername] = useState(user?.login ?? '')
     const [email, setEmail] = useState(user?.email ?? '')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState<FormErrors>()
 
-    const onChangePhone = React.useCallback((text: string) => {
-        const validate = isUpdatable(text, name, password, email)
-        setPhone(text)
+    const onChangeUsername = React.useCallback((text: string) => {
+        const validate = isUpdatable(text, username, password, email)
+        setUsername(text)
         action.reset()
-        setErrors({ phone: validate.errors.phone })
-    }, [])
-
-    const onChangeName = React.useCallback((text: string) => {
-        const validate = isUpdatable(phone, text, text, email)
-        setName(text)
-        setErrors({ name: validate.errors.name })
+        setErrors({ username: validate.errors.username })
     }, [])
 
     const onChangePassword = React.useCallback((text: string) => {
-        const validate = isUpdatable(phone, text, text, email)
+        const validate = isUpdatable(username, text, text, email)
         setPassword(text)
         setErrors({ password: validate.errors.password })
     }, [])
 
     const onChangeEmail = React.useCallback((text: string) => {
-        const validate = isUpdatable(phone, name, text, text)
+        const validate = isUpdatable(username, text, text)
         setEmail(text)
         setErrors({ email: validate.errors.email })
     }, [])
 
     const updateInfomation = React.useCallback(() => {
-        const validate = isUpdatable(phone, password, name, email)
+        const validate = isUpdatable(username, password, email)
         setErrors({ email: validate.errors.email })
         if (validate.valid) {
-            userAction.updateProfile(name, email, password)
+            userAction.updateProfile(username, email, password)
         }
-    }, [phone, name, email, password, errors])
+    }, [username, email, password, errors])
 
     const renderInfomation = React.useMemo(() => {
         return (
             <View style={PersonalInfomationStyles.component}>
                 <InfomationAvatar
-                    onChangeAvatar={userAction.updateAvatar}
-                    avatar={{ uri: user?.avatar }}
-                    name={user?.name}
-                    email={user?.optionalEmail}
-                    phoneNumber={user?.optionalPhone}
+                    // onChangeAvatar={userAction.updateAvatar}
+                    // avatar={{ uri: user?.avatar }}
+                    username={user?.login}
+                    email={user?.email}
                 />
             </View>
         )
@@ -91,9 +81,9 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
             <>
                 <InputField
                     containerStyle={PersonalInfomationStyles.component}
-                    value={name}
-                    error={errors?.name}
-                    onChangeText={onChangeName}
+                    value={username}
+                    error={errors?.username}
+                    onChangeText={onChangeUsername}
                     activeIcon={AssetIcons.BLUE_ACCOUNT}
                     defaultIcon={AssetIcons.GRAY_ACCOUNT}
                     inputProps={{
@@ -101,7 +91,7 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                     }}
                 />
 
-                <InputField
+                {/* <InputField
                     containerStyle={PersonalInfomationStyles.component}
                     value={phone}
                     error={errors?.phone}
@@ -112,7 +102,7 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                         placeholder: 'Số điện thoại',
                         disabled: true
                     }}
-                />
+                /> */}
 
                 <InputField
                     containerStyle={PersonalInfomationStyles.component}
@@ -126,7 +116,7 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                     }}
                 />
 
-                <InputField
+                {/* <InputField
                     containerStyle={PersonalInfomationStyles.component}
                     value={password}
                     error={errors?.password}
@@ -137,10 +127,10 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                         placeholder: 'Mật khẩu',
                         secureTextEntry: true
                     }}
-                />
+                /> */}
             </>
         )
-    }, [phone, name, email, password, errors])
+    }, [username, email, password, errors])
 
     return (
         <View style={PersonalInfomationStyles.container}>
@@ -165,7 +155,7 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                         onPress={updateInfomation}
                         buttonStyle={{ height: SizeDimens.mdInput }}
                         containerStyle={PersonalInfomationStyles.updateButton}
-                        titleStyle={{fontSize: FontSizeDimens.button}}
+                        titleStyle={{ fontSize: FontSizeDimens.button }}
                         title='Lưu thay đổi'
                     />
                 </KeyboardAwareScrollView>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { SignIn, SignUp, ForgotPassword } from '@module';
+import { SignIn, } from '@module';
 
 const Stack = createStackNavigator();
 
@@ -19,14 +19,14 @@ export const AuthenticationStack: React.FC = () => {
                 component={SignIn}
                 name='SignIn'
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 component={SignUp}
                 name='SignUp'
-            />
-            <Stack.Screen
+            /> */}
+            {/* <Stack.Screen
                 component={ForgotPassword}
                 name='ForgotPassword'
-            />
+            /> */}
         </Stack.Navigator>
     )
 }

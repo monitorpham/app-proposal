@@ -1,5 +1,5 @@
 export interface PostSignIn {
-    phone: string,
+    username: string,
     password: string
 }
 

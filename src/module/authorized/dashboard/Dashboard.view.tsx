@@ -6,7 +6,6 @@ import { DashboardProps } from './Dashboard.type'
 import { DashboardStyles } from './Dashboard.style'
 import { AssetIcons, BannerAssets } from '@assets'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Wallet } from './Wallet'
 import { LazyNavigationScreen } from '@layout'
 import { useUser } from '@shared-state'
 
@@ -18,44 +17,44 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
         return action.reset
     }, [])
 
-    const navigateToAgencyMap = React.useCallback(() => {
-        props.navigation.navigate('AgencyMap')
-    }, [])
+    // const navigateToAgencyMap = React.useCallback(() => {
+    //     props.navigation.navigate('AgencyMap')
+    // }, [])
 
     const navigateToHistory = React.useCallback(() => {
         props.navigation.navigate('History')
     }, [])
 
-    const navigateToWallet = React.useCallback(() => {
-        props.navigation.navigate('Wallet')
-    }, [])
-
-    const navigateToOrder = React.useCallback(() => {
-        props.navigation.navigate('Order')
-    }, [])
-
-    // const renderBanner = React.useMemo(() => {
-    //     return (
-    //         <Image
-    //             style={{ width: '100%' }}
-    //             source={BannerAssets.HOME}
-    //             resizeMode={Platform.select({
-    //                 ios: 'cover',
-    //                 android: 'stretch'
-    //             })}
-    //         />
-    //     )
+    // const navigateToWallet = React.useCallback(() => {
+    //     props.navigation.navigate('Wallet')
     // }, [])
+
+    // const navigateToOrder = React.useCallback(() => {
+    //     props.navigation.navigate('Order')
+    // }, [])
+
+    const renderBanner = React.useMemo(() => {
+        return (
+            <Image
+                style={{ width: '100%' }}
+                source={BannerAssets.HOME}
+                resizeMode={Platform.select({
+                    ios: 'cover',
+                    android: 'stretch'
+                })}
+            />
+        )
+    }, [])
 
     const renderButtons = React.useMemo(() => {
         return (
             <View style={DashboardStyles.buttonsContainer}>
                 <View style={DashboardStyles.borderBottomRow}>
                     <VIcon
-                        onPress={navigateToHistory}
+                        // onPress={navigateToHistory}
                         cotainerStyle={{ flex: 1 }}
                         icon={AssetIcons.ORDER}
-                        title='Đã xong'
+                        title='Hoàn thành'
                     />
                     {/* <VIcon
                         onPress={navigateToAgencyMap}
@@ -64,7 +63,7 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
                         title='Đặt lịch'
                     /> */}
                     <VIcon
-                        onPress={navigateToHistory}
+                        // onPress={navigateToHistory}
                         cotainerStyle={DashboardStyles.leftBorderButton}
                         icon={AssetIcons.HISTORY}
                         title='Đang xử lý'

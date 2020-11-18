@@ -23,15 +23,15 @@ export const History: React.FC<HistoryProps> = (props) => {
         action.getOrderHistory(user.id)
     }, [])
 
-    const onItemPress = React.useCallback((order: Order) => () => {
-        props.navigation.navigate('Order', { orderId: order.id })
-    }, [])
+    // const onItemPress = React.useCallback((order: Order) => () => {
+    //     props.navigation.navigate('Order', { orderId: order.id })
+    // }, [])
 
     const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Order>) => {
         return (
             <HistoryItem
                 order={item}
-                onPress={onItemPress(item)}
+                // onPress={onItemPress(item)}
             />
         )
     }, [])
@@ -47,7 +47,7 @@ export const History: React.FC<HistoryProps> = (props) => {
                         onPress: props.navigation.goBack
                     }
                 ]}
-                title='Lịch sử'
+                title='Hoàn thành'
             />
             <LazyNavigationScreen>
                 <View style={HistoryStyles.content}>

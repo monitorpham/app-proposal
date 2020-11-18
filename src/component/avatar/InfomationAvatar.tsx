@@ -7,11 +7,9 @@ import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimen
 import { Image } from 'react-native-image-crop-picker'
 
 export type InfomationAvatarProps = {
-    name?: string,
+    username?: string,
     email?: string,
     phoneNumber?: string,
-    avatar: ImageSourcePropType
-    onChangeAvatar?: (image: Image) => Promise<void>
 }
 
 export const InfomationAvatar: React.FC<InfomationAvatarProps> = (props) => {
@@ -21,7 +19,7 @@ export const InfomationAvatar: React.FC<InfomationAvatarProps> = (props) => {
             <View style={styles.infomationContainer}>
                 <TextView
                     style={styles.name}
-                    text={props.name}
+                    text={props.username}
                 />
                 <TextView
                     style={styles.blueInfo}
@@ -37,10 +35,10 @@ export const InfomationAvatar: React.FC<InfomationAvatarProps> = (props) => {
 
     return (
         <View style={[styles.container]}>
-            <EditableAvatar
+            {/* <EditableAvatar
                 onChangeAvatar={props.onChangeAvatar}
                 defaultSource={props.avatar}
-            />
+            /> */}
             {renderInfomation()}
         </View>
     )

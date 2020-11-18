@@ -1,22 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { KeyValueText, TextView } from '@component'
-import { Divider } from 'react-native-elements'
-import { responsiveHeight } from 'react-native-responsive-dimensions'
-import { FontSizeDimens, Colors } from '@res'
-import moment from 'moment'
-import { Order } from '@data'
-import { useUser } from '@shared-state'
-import { StringUtils } from '@util'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
-export type HistoryItemProps = {
-    order: Order,
+import moment from 'moment'
+import { Proposal } from '@data'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import { View } from 'react-native'
+import { KeyValueText } from '@component'
+
+export type ProposalItemProps = {
+    proposal: Proposal,
     onPress?: () => void
 }
 
-export const HistoryItem: React.FC<HistoryItemProps> = ({ order, onPress }) => {
-    const [{ user }] = useUser()
+export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal, onPress }) => {
+    // const [{ user }] = useUser()
     return (
         <TouchableWithoutFeedback onPress={onPress}>
             <View style={[styles.container]}>
@@ -74,3 +70,5 @@ const styles = StyleSheet.create({
         color: '#00B30D'
     }
 })
+
+

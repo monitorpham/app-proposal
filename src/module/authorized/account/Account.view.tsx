@@ -67,17 +67,17 @@ export const Account: React.FC<AccountProps> = (props) => {
     // }, [])
 
 
-    const renderAccount = React.useMemo(() => {
-        return (
-            <InfomationAvatar
-                onChangeAvatar={userAction.updateAvatar}
-                avatar={{ uri: user?.avatar }}
-                name={user?.name}
-                email={user?.optionalEmail}
-                phoneNumber={user?.optionalPhone}
-            />
-        )
-    }, [user])
+    // const renderAccount = React.useMemo(() => {
+    //     return (
+    //         <InfomationAvatar
+    //             onChangeAvatar={userAction.updateAvatar}
+    //             avatar={{ uri: user?.avatar }}
+    //             name={user?.name}
+    //             email={user?.optionalEmail}
+    //             phoneNumber={user?.optionalPhone}
+    //         />
+    //     )
+    // }, [user])
 
     const renderForm = React.useMemo(() => {
         return (
@@ -141,7 +141,7 @@ export const Account: React.FC<AccountProps> = (props) => {
                 title='Cá nhân'
             />
             <View style={AccountStyles.content}>
-                {renderAccount}
+                {/* {renderAccount} */}
                 <LazyNavigationScreen>
                     {renderForm}
                 </LazyNavigationScreen>

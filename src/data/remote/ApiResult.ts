@@ -2,6 +2,7 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { showMessage } from 'react-native-flash-message'
 
 export interface ApiResult<T = any> {
+    id_token: string
     data: T,
     errorId: number,
     message: string
@@ -49,11 +50,11 @@ export class Result<T = any> {
         this.code = errorId
         this.message = message
         this.isExeption = isException
-        if (!this.isSuccess) {
-            showMessage({
-                message,
-                type: 'warning'
-            })
-        }
+        // if (!this.isSuccess) {
+        //     showMessage({
+        //         message,
+        //         type: 'warning'
+        //     })
+        // }
     }
 }

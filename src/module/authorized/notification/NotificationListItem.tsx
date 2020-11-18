@@ -17,16 +17,16 @@ export const NotificationListItem: React.FC<NotificationListItemProps> = (props)
     const [{ user }] = useUserNotification()
     const { notification } = props
 
-    const renderAvatar = React.useMemo(() => {
-        return (
-            <Avatar
-                size='medium'
-                title={user?.shortName}
-                source={{ uri: user?.avatar }}
-                rounded
-            />
-        )
-    }, [user])
+    // const renderAvatar = React.useMemo(() => {
+    //     return (
+    //         <Avatar
+    //             size='medium'
+    //             title={user?.shortName}
+    //             source={{ uri: user?.avatar }}
+    //             rounded
+    //         />
+    //     )
+    // }, [user])
 
     const renderInfomation = React.useMemo(() => {
         return (
@@ -56,7 +56,7 @@ export const NotificationListItem: React.FC<NotificationListItemProps> = (props)
     return (
         <View style={[styles.container]}>
             <View style={styles.content}>
-                {renderAvatar}
+                {/* {renderAvatar} */}
                 {renderInfomation}
             </View>
             {renderDivider}
