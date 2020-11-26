@@ -4,11 +4,11 @@ import {
 import { FetchStatus } from '@constant'
 import { StackNavigationProp } from '@react-navigation/stack';
 import { AuthenticationStackParams } from '@navigation';
-import { User } from '@data';
+// import { User } from '@data';
 
 export type SignInState = {
     status: FetchStatus
-    user?: User
+    // user?: User
 };
 export type SignInStoreApi = StoreActionApi<SignInState>;
 

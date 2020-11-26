@@ -1,16 +1,16 @@
 import { createStore, createHook } from 'react-sweet-state';
 import { ProposalActions } from './Proposal.action';
-import { ProposalyState } from './Proposal.type';
+import { ProposalState } from './Proposal.type';
 
-export const INITIAL_STATE: ProposalyState = {
+export const INITIAL_STATE: ProposalState = {
     refreshStatus: 'INIT',
-    orders: []
+    proposals: []
 }
 
-export const ProposalStore = createStore<ProposalyState, typeof ProposalActions>({
+export const ProposalStore = createStore<ProposalState, typeof ProposalActions>({
     initialState: Object.assign({}, INITIAL_STATE),
     actions: ProposalActions,
     name: 'ProposalStore'
 });
 
-export const useHistory = createHook(ProposalStore);
+export const useProposal = createHook(ProposalStore);

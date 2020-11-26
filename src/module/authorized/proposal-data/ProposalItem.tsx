@@ -1,17 +1,21 @@
 import React from 'react'
 
 import moment from 'moment'
-import { Proposal } from '@data'
+import { Progress, Proposal } from '@data'
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { View } from 'react-native'
-import { KeyValueText } from '@component'
+import { StyleSheet, View } from 'react-native'
+import { KeyValueText, TextView } from '@component'
+import { Divider } from 'react-native-elements'
+import { responsiveHeight } from 'react-native-responsive-dimensions'
+import { FontSizeDimens } from '@res'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export type ProposalItemProps = {
-    proposal: Proposal,
+    progress: Progress,
     onPress?: () => void
 }
 
-export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal, onPress }) => {
+export const ProposalItem: React.FC<ProposalItemProps> = ({ progress, onPress }) => {
     // const [{ user }] = useUser()
     return (
         <TouchableWithoutFeedback onPress={onPress}>
@@ -30,7 +34,7 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal, onPress })
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Gía Tiền: '
-                    value={StringUtils.currenry(order.price)}
+                    // value={StringUtils.currenry(order.price)}
                 />
                 {/* <KeyValueText
                     containerStyle={styles.item}
@@ -40,12 +44,12 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal, onPress })
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Địa điểm: '
-                    value={order.address}
+                    value={progress.progress}
                 />
-                <TextView
+                {/* <TextView
                     style={styles.status}
-                    text={order.active ? 'Chưa hoàn thành' : 'Đã xong'}
-                />
+                    text={progress.status ? 'Chưa hoàn thành' : 'Đã xong'}
+                /> */}
             </View>
             <Divider />
         </TouchableWithoutFeedback>

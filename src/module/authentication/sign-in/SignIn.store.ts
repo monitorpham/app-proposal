@@ -4,7 +4,7 @@ import { SignInState } from './SignIn.type';
 
 export const INITIAL_STATE: SignInState = {
     status: 'INIT',
-    user: undefined
+    // user: undefined
 }
 
 export const SignInStore = createStore<SignInState, typeof SignInActions>({

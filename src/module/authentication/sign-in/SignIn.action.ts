@@ -1,7 +1,7 @@
 import { SignInStoreApi } from './SignIn.type';
 import { INITIAL_STATE } from './SignIn.store';
 import { ApiModule } from '@di';
-import { User, Result, PostSignIn } from '@data';
+import { PostSignIn } from '@data';
 
 export const SignInActions = {
     reset: () => ({ setState }: SignInStoreApi) => {
@@ -16,7 +16,7 @@ export const SignInActions = {
         try{
             const response = await ApiModule.shared().authenticationDatasource.signIn(body)
             console.log("111111---",response)
-            setState({ status: response.isSuccess ? 'SUCCESS' : 'FAILED', user: response.data })
+            setState({ status: response.isSuccess ? 'SUCCESS' : 'FAILED'})
         }catch(e){
             console.log(e)
         }

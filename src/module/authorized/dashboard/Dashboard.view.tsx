@@ -21,8 +21,8 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
     //     props.navigation.navigate('AgencyMap')
     // }, [])
 
-    const navigateToHistory = React.useCallback(() => {
-        props.navigation.navigate('History')
+    const navigateToProposal = React.useCallback(() => {
+        props.navigation.navigate('Proposal')
     }, [])
 
     // const navigateToWallet = React.useCallback(() => {
@@ -51,7 +51,7 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
             <View style={DashboardStyles.buttonsContainer}>
                 <View style={DashboardStyles.borderBottomRow}>
                     <VIcon
-                        // onPress={navigateToHistory}
+                        onPress={navigateToProposal}
                         cotainerStyle={{ flex: 1 }}
                         icon={AssetIcons.ORDER}
                         title='Hoàn thành'

@@ -25,38 +25,38 @@ export class Proposal {
     }
 
     id: number;
-    contentProposal: String;
-    Group: String;
-    startDate: String;
-    endDate: String;
-    hospitalDepartment: String;
+    contentProposal: string;
+    Group: string;
+    startDate: string;
+    endDate: string;
+    hospitalDepartment: string;
     hospitalDepartmentId: number;
-    currentProgressName: String;
+    currentProgressName: string;
     registerBy: "Admin";
-    note: String;
+    note: string;
     remainingDate: Date
     additionalDate: Date
-    deadLine: String
+    deadLine: string
     status: any
-    asignee: String
+    asignee: string
     asigneeId: number;
 
     constructor(
         id: number,
-        contentProposal: String,
-        Group: String,
-        startDate: String,
-        endDate: String,
-        hospitalDepartment: String,
+        contentProposal: string,
+        Group: string,
+        startDate: string,
+        endDate: string,
+        hospitalDepartment: string,
         hospitalDepartmentId: number,
-        currentProgressName: String,
+        currentProgressName: string,
         registerBy: "Admin",
-        note: String,
+        note: string,
         remainingDate: Date,
         additionalDate: Date,
-        deadLine: String,
+        deadLine: string,
         status: any,
-        asignee: String,
+        asignee: string,
         asigneeId: number
     ) {
 

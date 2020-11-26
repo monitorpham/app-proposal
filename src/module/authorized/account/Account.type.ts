@@ -11,8 +11,8 @@ export type AccountState = { status: FetchStatus };
 export type AccountStoreApi = StoreActionApi<AccountState>;
 
 export type AccountNavigationProps = CompositeNavigationProp<
-BottomTabNavigationProp<DashboardTabParams, 'AccountStack'>,
-StackNavigationProp<AccountStackParams, 'Account'>
+    BottomTabNavigationProp<DashboardTabParams, 'AccountStack'>,
+    StackNavigationProp<AccountStackParams, 'Account'>
 >
 
 

@@ -40,26 +40,26 @@ export const UserActions = {
             setState({ getUserFromStoreageStatus: 'FAILED' })
             return
         }
-        const result = await ApiModule.shared().userDatasource.getUserProfile(userId)
+        const result = await ApiModule.shared().userDatasource.getUserProfile()
         setState({ getUserFromStoreageStatus: result.isSuccess ? 'SUCCESS' : 'FAILED', user: result.data })
     },
-    updateProfile: (
-        name: string,
-        email: string,
-        password?: string
-    ) => async ({ setState, getState }: UserStoreApi) => {
-        const { user } = getState()
-        if (!user) return
-        setState({ updateProfileStatus: 'FETCHING' })
-        const result = await ApiModule.shared().userDatasource.updateProfile({
-            name, email, password, userId: user?.id
-        })
-        if (result.isSuccess) {
-            setState({ user: result.data, updateProfileStatus: 'SUCCESS' })
-        } else {
-            setState({ updateProfileStatus: 'FAILED' })
-        }
-    },
+    // updateProfile: (
+    //     name: string,
+    //     email: string,
+    //     password?: string
+    // ) => async ({ setState, getState }: UserStoreApi) => {
+    //     const { user } = getState()
+    //     if (!user) return
+    //     setState({ updateProfileStatus: 'FETCHING' })
+    //     const result = await ApiModule.shared().userDatasource.updateProfile({
+    //         name, email, password, userId: user?.id
+    //     })
+    //     if (result.isSuccess) {
+    //         setState({ user: result.data, updateProfileStatus: 'SUCCESS' })
+    //     } else {
+    //         setState({ updateProfileStatus: 'FAILED' })
+    //     }
+    // },
     // updateAvatar: (
     //     image: Image
     // ) => async ({ setState, getState, dispatch }: UserStoreApi) => {
@@ -74,7 +74,7 @@ export const UserActions = {
         const { user } = getState()
         if (!user) return
         setState({ getProfileStatus: 'FETCHING' })
-        const result = await ApiModule.shared().userDatasource.getUserProfile(user.id)
+        const result = await ApiModule.shared().userDatasource.getUserProfile()
         if (result.isSuccess) {
             setState({ user: result.data, getProfileStatus: 'SUCCESS' })
         } else {
@@ -82,15 +82,15 @@ export const UserActions = {
         }
     },
 
-    refreshNotification: () => async ({ setState, getState }: UserStoreApi) => {
-        const { user } = getState()
-        if (!user) return
-        setState({ refreshNotificationStatus: 'FETCHING' })
-        const result = await ApiModule.shared().userDatasource.getNotification(user.id)
-        if (result.isSuccess) {
-            setState({ notifications: result.data, refreshNotificationStatus: 'SUCCESS' })
-        } else {
-            setState({ refreshNotificationStatus: 'FAILED' })
-        }
-    }
+    // refreshNotification: () => async ({ setState, getState }: UserStoreApi) => {
+    //     const { user } = getState()
+    //     if (!user) return
+    //     setState({ refreshNotificationStatus: 'FETCHING' })
+    //     const result = await ApiModule.shared().userDatasource.getNotification(user.id)
+    //     if (result.isSuccess) {
+    //         setState({ notifications: result.data, refreshNotificationStatus: 'SUCCESS' })
+    //     } else {
+    //         setState({ refreshNotificationStatus: 'FAILED' })
+    //     }
+    // }
 }

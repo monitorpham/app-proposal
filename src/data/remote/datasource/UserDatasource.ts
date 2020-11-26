@@ -52,11 +52,12 @@ export class UserDatasource {
     //     }
     // }
 
-    async getUserProfile(userId: string): Promise<Result<User | undefined>> {
+    async getUserProfile(): Promise<Result<User | undefined>> {
         try {
-            const url = `account?user_id=${userId}`
+            const url = `account`
             const response = await this.provider.get<ApiResult<EUser>>(url)
             const user = User.fromDto(response.data.data)
+            console.log(user)
             return Result.fromAxiosResponse(user, response)
         } catch (error) {
             return error

@@ -6,12 +6,12 @@ const Stack = createStackNavigator();
 
 export type DashboardStackParams = {
     Dashboard: undefined,
-    Wallet: undefined,
-    Recharge: undefined,
-    Order: { orderId: string },
-    AgencyMap: undefined,
-    Booking: { agencyId: string },
-    History: undefined,
+    // Wallet: undefined,
+    // Recharge: undefined,
+    // Order: { orderId: string },
+    // AgencyMap: undefined,
+    // Booking: { agencyId: string },
+    // History: undefined,
     Proposal: undefined
 }
 
@@ -24,9 +24,13 @@ export const DashboardStack: React.FC = () => {
                 component={Dashboard}
                 name='Dashboard'
             />
-            <Stack.Screen
+            {/* <Stack.Screen
                 component={History}
                 name='History'
+            /> */}
+            <Stack.Screen
+                component={History}
+                name='Proposal'
             />
         </Stack.Navigator>
     )
