@@ -41,6 +41,7 @@ export const UserActions = {
             return
         }
         const result = await ApiModule.shared().userDatasource.getUserProfile()
+        console.log(result)
         setState({ getUserFromStoreageStatus: result.isSuccess ? 'SUCCESS' : 'FAILED', user: result.data })
     },
     // updateProfile: (

@@ -4,15 +4,16 @@ import { showMessage } from 'react-native-flash-message'
 export interface ApiResult<T = any> {
     id_token: string
     data: T,
-    errorId: number,
+    status: number,
     message: string
 }
 
 export class Result<T = any> {
 
     static fromAxiosResponse<DataT>(data: DataT, response: AxiosResponse<ApiResult>): Result<DataT> {
-        const other = response.data
-        return new Result(data, other.errorId, other.message)
+        const other = response
+        console.log("apiresult",response)
+        return new Result(data, other.status, other.data.message)
     }
 
     static fromAxiosError(error: AxiosError): Result {
@@ -32,29 +33,29 @@ export class Result<T = any> {
     }
 
     data: T
-    code: number
+    status: number
     message: string
     isExeption: boolean
 
     get isSuccess(): boolean {
-        return this.code === 200
+        return this.status === 200
     }
 
     constructor(
         data: T,
-        errorId: number,
+        status: number,
         message: string,
         isException: boolean = false
     ) {
         this.data = data
-        this.code = errorId
+        this.status = status
         this.message = message
         this.isExeption = isException
-        // if (!this.isSuccess) {
-        //     showMessage({
-        //         message,
-        //         type: 'warning'
-        //     })
-        // }
+        if (!this.isSuccess) {
+            showMessage({
+                message,
+                type: 'warning'
+            })
+        }
     }
 }

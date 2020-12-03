@@ -1,6 +1,6 @@
 export interface PostSignIn {
     username: string,
-    password: string
+    password: string,
 }
 
 export interface PostGoogleAuth {

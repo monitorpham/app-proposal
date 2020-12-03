@@ -6,6 +6,7 @@ import { FetchStatus } from '@constant';
 
 export type UserState = {
     user?: User,
+    status: FetchStatus,
     notifications: NotificationData[]
     getProfileStatus: FetchStatus,
     updateProfileStatus: FetchStatus,

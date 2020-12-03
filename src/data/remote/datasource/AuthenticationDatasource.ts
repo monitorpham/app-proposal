@@ -33,7 +33,7 @@ export class AuthenticationDatasource {
             const url = `authenticate?username=${body.username}&password=${body.password}`
             const response = await this.provider.post<ApiResult>(url, body, undefined)
             // const user = User.fromDto(response.data.data)
-            // console.log("++++", user)
+            console.log("++++", response)
 
             // const isLoggedIn = user && user.id_token;
             // const isApiUrl = request.url.startsWith(environment.apiUrl);
@@ -47,7 +47,7 @@ export class AuthenticationDatasource {
 
 
 
-            return Result.fromAxiosResponse( response.data.id_token, response)
+            return Result.fromAxiosResponse( response, response)
 
         } catch (error) {
             return error
