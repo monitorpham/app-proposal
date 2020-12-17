@@ -4,7 +4,7 @@ import { UserState } from './User.type';
 
 export const INITIAL_STATE: UserState = {
     user: undefined,
-    status: 'INIT',
+    id_token: 'INIT',
     notifications: [],
     updateProfileStatus: 'INIT',
     getProfileStatus: 'INIT',

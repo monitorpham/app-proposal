@@ -6,6 +6,7 @@ import { FontSizeDimens, Colors } from '@res'
 export type KeyValueTextProps = {
     title?: string,
     value?: string,
+    id?:number,
     containerStyle?: StyleProp<ViewStyle>
 }
 
@@ -19,6 +20,10 @@ export const KeyValueText: React.FC<KeyValueTextProps> = (props) => {
             <TextView
                 style={styles.value}
                 text={props.value}
+            />
+            <TextView
+                style={styles.value}
+                id={props.id}
             />
             {props.children}
         </View>

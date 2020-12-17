@@ -6,11 +6,13 @@ import { SplashScreenProps } from './SplashScreen.type'
 import { SplashScreenStyles } from './SplashScreen.style'
 import { AssetIcons } from '@assets'
 import { useStoreageUser } from '@shared-state'
+// import { codeStatus } from '../sign-in/SignIn.store'
 import NativeSplashScreen from 'react-native-splash-screen'
 
 export const SplashScreen: React.FC<SplashScreenProps> = (props) => {
     const [state, action] = useSplashScreen()
     const [_, userAction] = useStoreageUser()
+    // const [_,SignInActions] = codeStatus()
 
     React.useEffect(() => {
         return NativeSplashScreen.hide
@@ -19,6 +21,11 @@ export const SplashScreen: React.FC<SplashScreenProps> = (props) => {
     React.useEffect(() => {
         userAction.getUserFromStorage()
     }, [])
+
+    // React.useEffect(() => {
+    //     SignInActions.signIn
+    // }, [])
+
     return (
         <>
 

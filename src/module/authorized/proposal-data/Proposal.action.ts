@@ -9,6 +9,7 @@ export const ProposalActions = {
     getAllProposals: () => async ({ setState }: ProposalStoreApi) => {
         setState({ refreshStatus: 'FETCHING' })
         const result = await ApiModule.shared().proposalDatasource.allProposals()
+        console.log("proposal:  ",result)
         if (result.isSuccess) {
             setState({ refreshStatus: 'SUCCESS', proposals: result.data })
         } else {

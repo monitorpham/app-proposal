@@ -12,7 +12,7 @@ import { useUser } from '@shared-state'
 
 export const SignIn: React.FC<SignInProps> = (props) => {
     const [state, action] = useSignIn()
-    // const [_, userAction] = useUser()
+    const [_, userAction] = useUser()
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -20,12 +20,12 @@ export const SignIn: React.FC<SignInProps> = (props) => {
         return action.reset
     }, [])
 
-    // React.useEffect(() => {
-    //     if (state.user) {
-    //         userAction.setUser(state.user)
-    //         console.log(state.user)
-    //     }
-    // }, [state.user])
+    React.useEffect(() => {
+        if (state.user) {
+            userAction.setUser(state.user)
+            console.log(state.user)
+        }
+    }, [state.user])
 
     const signIn = React.useCallback(() => {
         action.signIn(username, password)

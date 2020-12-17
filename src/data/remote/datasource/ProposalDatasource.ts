@@ -13,6 +13,7 @@ export class ProposalDatasource {
         try {
             const url = `proposals-data-table`
             const response = await this.provider.get<ApiResult<EProposal[]>>(url)
+            console.log(response)
             return Result.fromAxiosResponse( response.data, response)
 
         } catch (error) {

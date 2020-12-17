@@ -8,6 +8,7 @@ export class User {
         return new User(
             dto.id,
             dto.login,
+            dto.token,
             dto.firstName,
             dto.lastName,
             dto.email,
@@ -28,6 +29,7 @@ export class User {
 
     id: any
     login: string;
+    token: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -65,6 +67,7 @@ export class User {
     constructor(
         id: any,
         login: string,
+        token: string,
         firstName: string,
         lastName: string,
         email: string,
@@ -83,6 +86,7 @@ export class User {
     ) {
         this.id = id
         this.login = login
+        this.token = token
         this.firstName = firstName
         this.lastName = lastName
         this.email = email

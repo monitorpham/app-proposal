@@ -2,6 +2,8 @@ import { ApiProvider } from '../Provider';
 import { ApiResult, Result } from '../ApiResult';
 import { PostSignIn, EUser, PostSignUp } from '../../dto';
 import { User } from '../../model';
+import setAuthorizationToken from '../jwt';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export class AuthenticationDatasource {
     provider: ApiProvider
@@ -31,23 +33,15 @@ export class AuthenticationDatasource {
     async signIn(body: PostSignIn): Promise<Result> {
         try {
             const url = `authenticate?username=${body.username}&password=${body.password}`
-            const response = await this.provider.post<ApiResult>(url, body, undefined)
+            const response = await this.provider.post<ApiResult>(url, body)
             // const user = User.fromDto(response.data.data)
-            console.log("++++", response)
-
-            // const isLoggedIn = user && user.id_token;
-            // const isApiUrl = request.url.startsWith(environment.apiUrl);
-            // if (isLoggedIn && isApiUrl) {
-            //     request = request.clone({
-            //         setHeaders: {
-            //             Authorization: `Bearer ${user.id_token}`
-            //         }
-            //     });
+            const token = response.data.id_token;
+            console.log("++++", token)
+            // if (token) {
+                // AsyncStorage.setItem('jwtToken', token);
+                setAuthorizationToken(token);
             // }
-
-
-
-            return Result.fromAxiosResponse( response, response)
+            return Result.fromAxiosResponse(response, response)
 
         } catch (error) {
             return error

@@ -7,16 +7,18 @@ import { ProposalStyles } from './Proposal.style'
 import { AssetIcons } from '@assets'
 import { ProposalItem } from './ProposalItem'
 import { LazyNavigationScreen } from '@layout'
-import { Progress } from '@data'
+import { Progress, Proposal } from '@data'
 import { useUser } from '@shared-state'
 
-export const Proposal: React.FC<ProposalProps> = (props) => {
+export const ProposalI: React.FC<ProposalProps> = (props) => {
     const [{ refreshStatus, proposals }, action] = useProposal()
     const [{ user }] = useUser()
-    // React.useEffect(() => {
-    //     if (!user) return
-    //     action.getOrderHistory(user.id)
-    // }, [])
+    console.log('user',user)
+    React.useEffect(() => {
+        console.log(user)
+        // if (user) return
+        action.getAllProposals()
+    }, [])
 
     // const onRefresh = React.useCallback(() => {
     //     if (!user) return
@@ -27,10 +29,10 @@ export const Proposal: React.FC<ProposalProps> = (props) => {
     //     props.navigation.navigate('Order', { orderId: order.id })
     // }, [])
 
-    const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Progress>) => {
+    const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>) => {
         return (
             <ProposalItem
-                progress={item}
+                proposal={item}
                 // onPress={onItemPress(item)}
             />
         )
@@ -55,7 +57,7 @@ export const Proposal: React.FC<ProposalProps> = (props) => {
                         refreshing={refreshStatus === 'FETCHING'}
                         // onRefresh={onRefresh}
                         data={proposals}
-                        keyExtractor={keyExtractor}
+                        // keyExtractor={keyExtractor}
                         renderItem={renderItem}
                     />
                 </View>

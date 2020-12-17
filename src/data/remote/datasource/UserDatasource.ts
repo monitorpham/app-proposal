@@ -3,7 +3,7 @@ import { ApiResult, Result } from '../ApiResult';
 import { EUser, PostProfileUpdating, ENotificationData } from '../../dto';
 import { User, NotificationData } from '../../model';
 import { Image } from 'react-native-image-crop-picker';
-
+import { useUser } from '@shared-state'
 export class UserDatasource {
     provider: ApiProvider
 
@@ -63,6 +63,24 @@ export class UserDatasource {
             return error
         }
     }
+
+    // async getUserProfile(userId:string): Promise<Result<User | undefined>> {
+    //     try {
+    //         const url = ``
+    //         const response = await this.provider.post<ApiResult>(url,{
+    //             headers: {
+    //                 // Accept: 'application/json',
+    //                 // 'Content-Type': 'application/json',
+    //                 Authorization: `Bearer ${userId}`
+    //               }
+    //         })
+    //         const user = User.fromDto(response.data.data)
+    //         console.log("request",response)
+    //         return Result.fromAxiosResponse(user, response)
+    //     } catch (error) {
+    //         return error
+    //     }
+    // }
 
     // async getNotification(userId: string): Promise<Result<NotificationData[]>> {
     //     try {

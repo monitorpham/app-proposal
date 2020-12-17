@@ -55,13 +55,13 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
         setErrors({ email: validate.errors.email })
     }, [])
 
-    const updateInfomation = React.useCallback(() => {
-        const validate = isUpdatable(username, password, email)
-        setErrors({ email: validate.errors.email })
-        if (validate.valid) {
-            userAction.updateProfile(username, email, password)
-        }
-    }, [username, email, password, errors])
+    // const updateInfomation = React.useCallback(() => {
+    //     const validate = isUpdatable(username, password, email)
+    //     setErrors({ email: validate.errors.email })
+    //     if (validate.valid) {
+    //         userAction.updateProfile(username, email, password)
+    //     }
+    // }, [username, email, password, errors])
 
     const renderInfomation = React.useMemo(() => {
         return (
@@ -152,7 +152,7 @@ export const PersonalInfomation: React.FC<PersonalInfomationProps> = (props) => 
                     {renderInfomation}
                     {renderForm}
                     <Button
-                        onPress={updateInfomation}
+                        // onPress={updateInfomation}
                         buttonStyle={{ height: SizeDimens.mdInput }}
                         containerStyle={PersonalInfomationStyles.updateButton}
                         titleStyle={{ fontSize: FontSizeDimens.button }}

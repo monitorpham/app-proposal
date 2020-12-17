@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { Dashboard, History } from '@module';
+import { Dashboard, History, ProposalI } from '@module';
 
 const Stack = createStackNavigator();
 
@@ -29,7 +29,7 @@ export const DashboardStack: React.FC = () => {
                 name='History'
             /> */}
             <Stack.Screen
-                component={History}
+                component={ProposalI}
                 name='Proposal'
             />
         </Stack.Navigator>

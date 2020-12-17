@@ -11,14 +11,14 @@ import { FontSizeDimens } from '@res'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export type ProposalItemProps = {
-    progress: Progress,
-    onPress?: () => void
+    proposal: Proposal,
+    // onPress?: () => void
 }
 
-export const ProposalItem: React.FC<ProposalItemProps> = ({ progress, onPress }) => {
+export const ProposalItem: React.FC<ProposalItemProps> = ({proposal}) => {
     // const [{ user }] = useUser()
     return (
-        <TouchableWithoutFeedback onPress={onPress}>
+        <TouchableWithoutFeedback>
             <View style={[styles.container]}>
                 {/* <KeyValueText
                     containerStyle={styles.item}
@@ -34,7 +34,7 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ progress, onPress })
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Gía Tiền: '
-                    // value={StringUtils.currenry(order.price)}
+                    id={proposal.id}
                 />
                 {/* <KeyValueText
                     containerStyle={styles.item}
@@ -44,7 +44,7 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ progress, onPress })
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Địa điểm: '
-                    value={progress.progress}
+                    value={proposal.contentProposal}
                 />
                 {/* <TextView
                     style={styles.status}

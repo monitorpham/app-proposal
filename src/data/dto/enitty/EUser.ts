@@ -14,6 +14,7 @@ export type EUser = {
     
     id: any
     login: string;
+    token: string;
     firstName: string;
     lastName: string;
     email: string;

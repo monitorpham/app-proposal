@@ -7,8 +7,10 @@ import { AuthenticationStackParams } from '@navigation';
 import { User } from '@data';
 
 export type SignInState = {
-    status: FetchStatus
-    // user?: User
+    status: FetchStatus,
+    user?: User,
+    token?: User
+    // code: FetchStatus
 };
 export type SignInStoreApi = StoreActionApi<SignInState>;
 

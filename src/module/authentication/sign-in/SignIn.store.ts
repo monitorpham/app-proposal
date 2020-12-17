@@ -4,7 +4,8 @@ import { SignInState } from './SignIn.type';
 
 export const INITIAL_STATE: SignInState = {
     status: 'INIT',
-    // user: undefined
+    user: undefined
+    // code: 'INIT'
 }
 
 export const SignInStore = createStore<SignInState, typeof SignInActions>({
@@ -14,3 +15,7 @@ export const SignInStore = createStore<SignInState, typeof SignInActions>({
 });
 
 export const useSignIn = createHook(SignInStore);
+
+// export const codeStatus = createHook(SignInStore, {
+//     selector: (state: SignInState) => ({ code: state.status, status: state.status })
+// });

@@ -12,7 +12,14 @@ export async function saveUserIntoStorage(userId: string) {
 }
 
 export async function removeUserFromStorage() {
-    return AsyncStorage.removeItem(USER_KEY)
+    // return AsyncStorage.removeItem(USER_KEY)
+    try {
+        await AsyncStorage.removeItem(USER_KEY);
+        return true;
+    }
+    catch(exception) {
+        return false;
+    }
 }
 
 export async function getUserFromStorage(): Promise<string | null> {
@@ -36,6 +43,7 @@ export const UserActions = {
     getUserFromStorage: () => async ({ setState, getState }: UserStoreApi) => {
         setState({ getUserFromStoreageStatus: 'FETCHING' })
         const userId = await getUserFromStorage()
+        console.log("userid",userId)
         if (!userId) {
             setState({ getUserFromStoreageStatus: 'FAILED' })
             return
