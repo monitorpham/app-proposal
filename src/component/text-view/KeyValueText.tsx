@@ -20,11 +20,12 @@ export const KeyValueText: React.FC<KeyValueTextProps> = (props) => {
             <TextView
                 style={styles.value}
                 text={props.value}
+                // numberOfLines={2}
             />
-            <TextView
+            {/* <TextView
                 style={styles.value}
                 id={props.id}
-            />
+            /> */}
             {props.children}
         </View>
     )
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginLeft: 2,
         fontSize: FontSizeDimens.md,
-        color: Colors.primaryBlue
+        color: Colors.primaryBlue,
+        // backgroundColor: 'blue'
     }
 })

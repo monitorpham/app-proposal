@@ -47,7 +47,7 @@ export const ModalPicker: React.FC<ModalPickerProps> = (props) => {
                     <>
                         <Header
                             ViewComponent={LinearGradient}
-                            linearGradientProps={{ colors: LinearColors.lineRed }}
+                            linearGradientProps={{ colors: LinearColors.lineGreen }}
                             centerComponent={{
                                 text: props.title,
                                 style: {

@@ -28,7 +28,7 @@ export const VIcon: React.FC<VIconProps> = (props) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     title: {
         marginTop: 4,

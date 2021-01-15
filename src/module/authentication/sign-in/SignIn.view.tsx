@@ -14,8 +14,8 @@ export const SignIn: React.FC<SignInProps> = (props) => {
     const [state, action] = useSignIn()
     const [_, userAction] = useUser()
 
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+    const [username, setUsername] = useState('admin')
+    const [password, setPassword] = useState('123456')
     React.useEffect(() => {
         return action.reset
     }, [])

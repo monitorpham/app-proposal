@@ -12,19 +12,51 @@ export const DashboardStyles = StyleSheet.create({
         zIndex: -1
     },
     buttonsContainer: {
-        height: responsiveHeight(20),
+        height: responsiveHeight(75),
+        // height: 100,
+        flex: 1,
         padding: 16,
-        marginBottom: 60
+        paddingTop: 30,
+        marginBottom: 60,
+        flexDirection:'column',
+        alignItems: 'center'
     },
     leftBorderButton: {
         flex: 1,
-        borderLeftWidth: 0.7,
-        borderColor: Colors.primaryGray
+        // borderLeftWidth: 0,
+        // elevation:2,
+        // borderColor: Colors.primaryGray,
+        // borderRadius: 13,
+        borderWidth: 0,
+        // paddingTop: 8
+        shadowColor: '#30C1DD',
+        shadowRadius: 10,
+        shadowOpacity: 0.6,
+        elevation: 4,
+        shadowOffset: {
+            width: 0,
+            height: 3
+        }
     },
     borderBottomRow: {
         flexDirection: 'row',
         flex: 1,
-        borderBottomWidth: 0.7,
-        borderColor: Colors.primaryGray
+        paddingBottom: 20,
+        // borderBottomWidth: 0,
+        // borderColor: Colors.primaryGray,
+        // elevation: 5,
+    },
+    allpro: {
+        flex: 1,
+        borderWidth: 0,
+        // paddingTop: 8
+        shadowColor: '#30C1DD',
+        shadowRadius: 10,
+        shadowOpacity: 0.6,
+        elevation: 4,
+        shadowOffset: {
+            width: 0,
+            height: 3
+        }
     }
 })

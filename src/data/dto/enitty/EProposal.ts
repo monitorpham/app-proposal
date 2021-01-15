@@ -1,5 +1,5 @@
 export interface EProposal {
-    id: number;
+    id: string;
     contentProposal: string;
     Group: string;
     startDate: string;

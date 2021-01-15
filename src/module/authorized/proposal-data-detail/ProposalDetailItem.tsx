@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react'
 
 import moment from 'moment'
 import { Progress, Proposal } from '@data'
@@ -10,16 +10,15 @@ import { responsiveHeight } from 'react-native-responsive-dimensions'
 import { FontSizeDimens } from '@res'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
-export type ProposalItemProps = {
+export type ProposalDetailItemProps = {
     proposal: Proposal,
-    onPress?: () => void
+    // onPress?: () => void
 }
 
-export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
+export const ProposalDetailItem: React.FC<ProposalDetailItemProps> = ({proposal}) => {
     // const [{ user }] = useUser()
-    const [shouldShow, setShouldShow] = useState(true);
     return (
-        <TouchableWithoutFeedback onPress={() => setShouldShow(!shouldShow)}>
+        <TouchableWithoutFeedback>
             <View style={[styles.container]}>
                 {/* <KeyValueText
                     containerStyle={styles.item}
@@ -31,7 +30,6 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
                         text={moment(order.date).format('DD/MM/YYYY HH:mm')}
                     />
                 </KeyValueText> */}
-
                 {/* <KeyValueText
                     containerStyle={styles.item}
                     title='Gía Tiền: '
@@ -42,6 +40,8 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
                     title='Biển số: '
                     value={order.licensePlate}
                 /> */}
+
+
                 <KeyValueText
                     containerStyle={styles.item}
                     title='ID: '
@@ -57,34 +57,23 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
                     title='Nội dung đề nghị: '
                     value={proposal.proposal.contentProposal}
                 />
-                {!shouldShow ? (
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Tiến trình hiện tại: '
                     value={proposal.currentProgressName}
                 />
-                ) : null}
-                {!shouldShow ? (
                 <KeyValueText
                     containerStyle={styles.item}
-                    title='Note: '
-                    value={proposal.proposal.note}
+                    title='Người thực hiện: '
+                    value={proposal.proposal.userExtra.user.firstName}
                 />
-                ) : null}
-                {!shouldShow ? (
-                    <KeyValueText
-                        containerStyle={styles.item}
-                        title='Người thực hiện: '
-                        value={proposal.proposal.userExtra.user.firstName}
-                    />
-                ) : null}
-                {!shouldShow ? (
-                <KeyValueText
+
+
+                {/* <KeyValueText
                     containerStyle={styles.item}
                     title='Deadline: '
                     value={moment(proposal.deadLine).format('DD/MM/YYYY')}
-                />
-                ) : null}
+                /> */} 
                 {/* <TextView
                     style={styles.status}
                     text={progress.status ? 'Chưa hoàn thành' : 'Đã xong'}

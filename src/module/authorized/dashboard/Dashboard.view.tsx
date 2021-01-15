@@ -25,6 +25,10 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
         props.navigation.navigate('Proposal')
     }, [])
 
+    const navigateToCreateProposal = React.useCallback(() => {
+        props.navigation.navigate('Adding')
+    }, [])
+
     // const navigateToWallet = React.useCallback(() => {
     //     props.navigation.navigate('Wallet')
     // }, [])
@@ -52,9 +56,9 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
                 <View style={DashboardStyles.borderBottomRow}>
                     <VIcon
                         onPress={navigateToProposal}
-                        cotainerStyle={{ flex: 1 }}
-                        icon={AssetIcons.ORDER}
-                        title='Hoàn thành'
+                        cotainerStyle={DashboardStyles.allpro}
+                        icon={AssetIcons.REQUEST}
+                        title='Tất cả đề nghị'
                     />
                     {/* <VIcon
                         onPress={navigateToAgencyMap}
@@ -62,6 +66,22 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
                         icon={AssetIcons.REQUEST}
                         title='Đặt lịch'
                     /> */}
+                    <View style={{padding:8}}></View>
+                    <VIcon
+                        onPress={navigateToCreateProposal}
+                        cotainerStyle={DashboardStyles.leftBorderButton}
+                        icon={AssetIcons.RED_CIRCLE_PLUS}
+                        title='Thêm đề nghị'
+                    />
+                </View>
+                <View style={{ flexDirection: 'row', flex: 1 }}>
+                    <VIcon
+                        // onPress={navigateToWallet}
+                        cotainerStyle={DashboardStyles.allpro}
+                        icon={AssetIcons.ORDER}
+                        title='Hoàn thành'
+                    />
+                    <View style={{padding:8}}></View>
                     <VIcon
                         // onPress={navigateToHistory}
                         cotainerStyle={DashboardStyles.leftBorderButton}
@@ -69,20 +89,6 @@ export const Dashboard: React.FC<DashboardProps> = (props) => {
                         title='Đang xử lý'
                     />
                 </View>
-                {/* <View style={{ flexDirection: 'row', flex: 1 }}>
-                    <VIcon
-                        onPress={navigateToWallet}
-                        cotainerStyle={{ flex: 1 }}
-                        icon={AssetIcons.PAY}
-                        title='Ví Tiền'
-                    />
-                    <VIcon
-                        onPress={navigateToHistory}
-                        cotainerStyle={DashboardStyles.leftBorderButton}
-                        icon={AssetIcons.HISTORY}
-                        title='Lịch sử'
-                    />
-                </View> */}
             </View>
         )
     }, [])

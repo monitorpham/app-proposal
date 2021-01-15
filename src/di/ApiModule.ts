@@ -1,4 +1,4 @@
-import { OrderDatasource } from './../data/remote/datasource/OrderDatasource';
+// import { OrderDatasource } from './../data/remote/datasource/OrderDatasource';
 import { ProposalDatasource } from './../data/remote/datasource/ProposalDatasource';
 
 import { ApiProvider, AuthenticationDatasource, UserDatasource } from '@data';
@@ -20,17 +20,18 @@ export class ApiModule {
 
     userDatasource: UserDatasource
 
-    orderDatasource: OrderDatasource
+    // orderDatasource: OrderDatasource
 
     proposalDatasource: ProposalDatasource
 
     constructor() {
         this.apiProvider = new ApiProvider({
             baseURL: 'https://deploy-proposal.herokuapp.com/api/'
+            // baseURL: 'http://localhost:8080/api/'
         })
         this.authenticationDatasource = new AuthenticationDatasource(this.apiProvider)
         this.userDatasource = new UserDatasource(this.apiProvider)
-        this.orderDatasource = new OrderDatasource(this.apiProvider)
+        // this.orderDatasource = new OrderDatasource(this.apiProvider)
         this.proposalDatasource = new ProposalDatasource(this.apiProvider)
     }
 }

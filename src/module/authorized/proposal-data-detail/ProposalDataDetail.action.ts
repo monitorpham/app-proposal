@@ -1,15 +1,15 @@
-import { ProposalStoreApi } from './Proposal.type';
-import { INITIAL_STATE } from './Proposal.store';
+import { ProposalDetailStoreApi } from './ProposalDataDetail.type';
+import { INITIAL_STATE } from './ProposalDataDetail.store';
 import { ApiModule } from '@di';
 
-export const ProposalActions = {
-    reset: () => async ({ setState }: ProposalStoreApi) => {
+export const ProposalDetailActions = {
+    reset: () => async ({ setState }: ProposalDetailStoreApi) => {
         setState(INITIAL_STATE)
     },
-    getAllProposals: () => async ({ setState }: ProposalStoreApi) => {
+    getProposalDetail: (id: string) => async ({ setState }: ProposalDetailStoreApi) => {
         setState({ refreshStatus: 'FETCHING' })
-        const result = await ApiModule.shared().proposalDatasource.allProposals()
-        console.log("proposal:  ",result.data)
+        const result = await ApiModule.shared().proposalDatasource.proposalDeatail(id)
+        console.log("proposal detail:  ", result.data)
 
         // result.data.map(function(item, i){
         //     console.log('test',item);

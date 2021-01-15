@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { Dashboard, History, ProposalI } from '@module';
+import { Dashboard, History, ProposalI, ProposalDetail, Adding } from '@module';
 
 const Stack = createStackNavigator();
 
@@ -10,9 +10,10 @@ export type DashboardStackParams = {
     // Recharge: undefined,
     // Order: { orderId: string },
     // AgencyMap: undefined,
-    // Booking: { agencyId: string },
+    Adding: undefined,
     // History: undefined,
-    Proposal: undefined
+    Proposal: undefined,
+    ProposalDetail: {proId:string}
 }
 
 export const DashboardStack: React.FC = () => {
@@ -31,6 +32,14 @@ export const DashboardStack: React.FC = () => {
             <Stack.Screen
                 component={ProposalI}
                 name='Proposal'
+            />
+            <Stack.Screen
+                component={ProposalDetail}
+                name='ProposalDetail'
+            />
+            <Stack.Screen
+                component={Adding}
+                name='Adding'
             />
         </Stack.Navigator>
     )

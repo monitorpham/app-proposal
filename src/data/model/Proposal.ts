@@ -24,7 +24,7 @@ export class Proposal {
         )
     }
 
-    id: number;
+    id: string;
     contentProposal: string;
     Group: string;
     startDate: string;
@@ -42,7 +42,7 @@ export class Proposal {
     asigneeId: number;
 
     constructor(
-        id: number,
+        id: string,
         contentProposal: string,
         Group: string,
         startDate: string,

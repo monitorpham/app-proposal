@@ -37,10 +37,10 @@ export class AuthenticationDatasource {
             // const user = User.fromDto(response.data.data)
             const token = response.data.id_token;
             console.log("++++", token)
-            // if (token) {
-                // AsyncStorage.setItem('jwtToken', token);
+            if (token) {
+                AsyncStorage.setItem('jwtToken', token);
                 setAuthorizationToken(token);
-            // }
+            }
             return Result.fromAxiosResponse(response, response)
 
         } catch (error) {
