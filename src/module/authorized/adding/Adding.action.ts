@@ -2,6 +2,7 @@ import { AddingStoreApi } from './Adding.type';
 import { INITIAL_STATE } from './Adding.store';
 import { ApiModule } from '@di';
 import { PostProposalBody } from '@data';
+import { showMessage } from 'react-native-flash-message'
 
 export const AddingActions = {
     reset: () => ({ setState }: AddingStoreApi) => {
@@ -36,9 +37,17 @@ export const AddingActions = {
         setState({ createStatus: 'FETCHING' })
         const result = await ApiModule.shared().proposalDatasource.createProposal(body)
         console.log('createProposal', result)
-        if (result.isSuccess) {
+        if (result.isCreateSuccess) {
+            showMessage({
+                message:'Đã tạo đề nghị thành công',
+                type: "success",
+            }),
             setState({ createStatus: 'SUCCESS' })
         } else {
+            showMessage({
+                message:'Xin nhập lại thông tin',
+                type: "warning",
+            }),
             setState({ createStatus: 'FAILED' })
         }
     },

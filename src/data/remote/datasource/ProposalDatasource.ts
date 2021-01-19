@@ -47,14 +47,22 @@ export class ProposalDatasource {
     async createProposal(body: PostProposalBody): Promise<Result> {
         try {
             const form = new FormData()
-            form.append('user_extra_id', body.userListId)
-            // form.append('note', body.note)
-            form.append('hos_dep_id', body.hosDepId)
-            form.append('additionalDate', body.additionalDate)
-            form.append('content', body.content)
-            form.append('date_adding', moment(body.dateAdding).format('YYYY-MM-DD'))
+            const proposalForm: any = {
+                "contentProposal": body.content,
+                "hospitalDepartmentId": body.hosDepId,
+                // "note": null,
+                "startDate": body.dateAdding,
+                "userExtraId": body.userListId,
+                "additionalDate": body.additionalDate
+              }
+            // form.append('userExtraId', body.userListId)
+            // // form.append('note', body.note)
+            // form.append('hospitalDepartmentId', body.hosDepId)
+            // form.append('additionalDate', body.additionalDate)
+            // form.append('contentProposal', body.content)
+            // form.append('startDate', moment(body.dateAdding).format('YYYY-MM-DD'))
             const url = `proposals`
-            const response = await this.provider.post<ApiResult>(url, form,{
+            const response = await this.provider.post<ApiResult>(url, proposalForm,{
                 headers: {
                     'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
                 }

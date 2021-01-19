@@ -41,6 +41,9 @@ export class Result<T = any> {
     get isSuccess(): boolean {
         return this.status === 200
     }
+    get isCreateSuccess(): boolean {
+        return this.status === 201
+    }
 
     constructor(
         data: T,
