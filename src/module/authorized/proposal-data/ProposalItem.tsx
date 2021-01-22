@@ -57,7 +57,7 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
                     title='Nội dung đề nghị: '
                     value={proposal.proposal.contentProposal}
                 />
-                {!shouldShow ? (
+                {/* {!shouldShow ? (
                 <KeyValueText
                     containerStyle={styles.item}
                     title='Tiến trình hiện tại: '
@@ -84,7 +84,8 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
                     title='Deadline: '
                     value={moment(proposal.deadLine).format('DD/MM/YYYY')}
                 />
-                ) : null}
+                ) : null} */}
+
                 {/* <TextView
                     style={styles.status}
                     text={progress.status ? 'Chưa hoàn thành' : 'Đã xong'}
@@ -98,8 +99,8 @@ export const ProposalItem: React.FC<ProposalItemProps> = ({ proposal }) => {
 const styles = StyleSheet.create({
     container: {
         padding: 12,
-        paddingLeft: 16
-        // backgroundColor: '#111'
+        paddingLeft: 16,
+        backgroundColor: 'white'
     },
     item: {
         marginTop: responsiveHeight(0.8),

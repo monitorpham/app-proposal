@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ListRenderItemInfo, StyleSheet } from 'react-native'
+import { View, Text, ListRenderItemInfo, StyleSheet,TouchableOpacity } from 'react-native'
 import { Header, ListView } from '@component'
 import { useProposal } from './Proposal.store'
 import { ProposalProps } from './Proposal.type'
@@ -11,7 +11,7 @@ import { Progress, Proposal } from '@data'
 import { useUser } from '@shared-state'
 
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { TouchableOpacity } from 'react-native-gesture-handler'
+// import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export const ProposalI: React.FC<ProposalProps> = (props) => {
     const [{ refreshStatus, proposals }, action] = useProposal()
@@ -29,21 +29,56 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
         action.getAllProposals()
     }, [])
 
-    const onItemPress = React.useCallback((proposal: Proposal) => () => {
-        // console.log("xxxxx")
-        props.navigation.navigate('ProposalDetail', { proId: proposal.currentProgressName })
+    // const onItemPress = React.useCallback((proposal: Proposal) => () => {
+    //     // console.log("xxxxx")
+    //     props.navigation.navigate('ProposalDetail', { proId: proposal.currentProgressName })
 
-    }, [])
+    // }, [])
 
     const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>) => {
         // console.log("aaa", item)
         return (
             <ProposalItem
                 proposal={item}
-                onPress={onItemPress(item)}
+                // onPress={onItemPress(item)}
             />
         )
     }, [])
+
+    const navigateToUpdate = React.useCallback(() => {
+        props.navigation.navigate('UpdateProgress')
+    }, [])
+
+    const renderHiddenItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>, rowMap) => (
+        <View style={styles.rowBack}>
+            <TouchableOpacity
+                style={[styles.backLeftBtn, styles.backLeftBtnLeft]}
+                onPress={navigateToUpdate}
+            >
+                <Text style={styles.backTextWhite}>Update</Text>
+            </TouchableOpacity>  
+            <TouchableOpacity
+                style={[styles.backLeftBtn, styles.backLeftBtnRight]}
+                // onPress={() => closeRow(rowMap, item.proposal.id)}
+            >
+                <Text style={styles.backTextWhite}>View</Text>
+            </TouchableOpacity>     
+
+
+            {/* <TouchableOpacity
+                style={[styles.backRightBtn, styles.backRightBtnLeft]}
+                onPress={() => closeRow(rowMap, item.proposal.id)}
+            >
+                <Text style={styles.backTextWhite}>Close</Text>
+            </TouchableOpacity> */}
+            <TouchableOpacity
+                style={[styles.backRightBtn, styles.backRightBtnRight]}
+                // onPress={() => deleteRow(rowMap, data.item.key)}
+            >
+                <Text style={styles.backTextWhite}>Delete</Text>
+            </TouchableOpacity>
+        </View>
+    ),[])
 
     const keyExtractor = React.useCallback((item: Proposal) => item.proposal.id.toString(), [])
 
@@ -59,24 +94,6 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
         console.log('This row opened', rowKey);
     };
 
-    const renderHiddenItem = (data, rowMap) => (
-        <View style={styles.rowBack}>
-            {/* <Text>Left</Text> */}
-            <TouchableOpacity
-                style={[styles.backRightBtn, styles.backRightBtnLeft]}
-                // onPress={() => closeRow(rowMap, data.item.key)}
-            >
-                <Text style={styles.backTextWhite}>Close</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={[styles.backRightBtn, styles.backRightBtnRight]}
-                // onPress={() => deleteRow(rowMap, data.item.key)}
-            >
-                <Text style={styles.backTextWhite}>Delete</Text>
-            </TouchableOpacity>
-        </View>
-    );
-
     return (
         <View style={ProposalStyles.container}>
             <Header
@@ -86,7 +103,7 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
                         onPress: props.navigation.goBack
                     }
                 ]}
-                title='Đề nghị'
+                title='Danh sách đề nghị'
             />
             <LazyNavigationScreen>
                 <View style={ProposalStyles.content}>
@@ -98,8 +115,8 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
                         renderItem={renderItem}
 
                         renderHiddenItem={renderHiddenItem}
-                        leftOpenValue={75}
-                        rightOpenValue={-150}
+                        leftOpenValue={150}
+                        rightOpenValue={-75}
                         previewRowKey={'0'}
                         previewOpenValue={-40}
                         previewOpenDelay={3000}
@@ -114,7 +131,7 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         flex: 1,
     },
     backTextWhite: {
@@ -151,6 +168,23 @@ const styles = StyleSheet.create({
     backRightBtnRight: {
         backgroundColor: 'red',
         right: 0,
+    },
+
+    backLeftBtn: {
+        alignItems: 'center',
+        bottom: 0,
+        justifyContent: 'center',
+        position: 'absolute',
+        top: 0,
+        width: 75,
+    },
+    backLeftBtnLeft: {
+        backgroundColor: 'blue',
+        left: 75,
+    },
+    backLeftBtnRight: {
+        backgroundColor: 'orange',
+        left: 0,
     },
 });
 
