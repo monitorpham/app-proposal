@@ -17,7 +17,7 @@ export class ProposalDatasource {
             const url = `proposals-data-table`
             const response = await this.provider.get<ApiResult<EProposal[]>>(url, {
                 headers: {
-                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
                 }
             })
             console.log("get proposals data", response)
@@ -33,7 +33,7 @@ export class ProposalDatasource {
             const url = `get-All-ProgressDetail-By-ProposalId?id=${id}`
             const response = await this.provider.get<ApiResult<EProposal[]>>(url, {
                 headers: {
-                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
                 }
             })
             console.log("proposals detail", response)
@@ -64,7 +64,7 @@ export class ProposalDatasource {
             const url = `proposals`
             const response = await this.provider.post<ApiResult>(url, proposalForm,{
                 headers: {
-                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
                 }
             })
             console.log('post form', response)
@@ -79,7 +79,7 @@ export class ProposalDatasource {
             const url = `hospital-departments`
             const response = await this.provider.get<ApiResult<EHospitalDepartment[]>>(url, {
                 headers: {
-                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
                 }
             })
             console.log("get hospital-departments data", response)
@@ -97,7 +97,7 @@ export class ProposalDatasource {
             const url = `users?size=100000`
             const response = await this.provider.get<ApiResult<EUser[]>>(url, {
                 headers: {
-                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxMTMwMzY1Mn0.Uq0Fp8dmai9GcTC60IXjGB2lfNo6NP2DKnajD-26t_zBeiCSbI9EYhecu248vEPoAawK0KWK1ZyHBcmcUtBM3g'}`
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
                 }
             })
             console.log("get user list data", response)
