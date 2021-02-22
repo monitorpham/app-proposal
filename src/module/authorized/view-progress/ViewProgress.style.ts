@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { Colors, FontSizeDimens, SizeDimens } from '@res';
 import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
 
-export const UpdateProgressStyles = StyleSheet.create({
+export const ViewProgressStyles = StyleSheet.create({
   container: {
     flex: 1,
     // padding: 20,

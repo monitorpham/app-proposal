@@ -39,7 +39,7 @@ export class AuthenticationDatasource {
             console.log("++++", token)
             if (token) {
                 AsyncStorage.setItem('jwtToken', token);
-                setAuthorizationToken(token);
+                // setAuthorizationToken(token);
             }
             return Result.fromAxiosResponse(response, response)
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ListRenderItemInfo, StyleSheet,TouchableOpacity } from 'react-native'
+import { View, Text, ListRenderItemInfo, StyleSheet, TouchableOpacity } from 'react-native'
 import { Header, ListView } from '@component'
 import { useProposal } from './Proposal.store'
 import { ProposalProps } from './Proposal.type'
@@ -11,7 +11,13 @@ import { Progress, Proposal } from '@data'
 import { useUser } from '@shared-state'
 
 import { SwipeListView } from 'react-native-swipe-list-view';
+import SearchBar from 'react-native-search-bar';
 // import { TouchableOpacity } from 'react-native-gesture-handler'
+
+// export type ProposalProps = {
+//     progress: Progress,
+//     onPress?: () => void
+// }
 
 export const ProposalI: React.FC<ProposalProps> = (props) => {
     const [{ refreshStatus, proposals }, action] = useProposal()
@@ -40,7 +46,7 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
         return (
             <ProposalItem
                 proposal={item}
-                // onPress={onItemPress(item)}
+            // onPress={onItemPress(item)}
             />
         )
     }, [])
@@ -49,20 +55,25 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
         props.navigation.navigate('UpdateProgress')
     }, [])
 
-    const renderHiddenItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>, rowMap) => (
+    const navigateToView = React.useCallback((proposal: Proposal) => () => {
+        console.log("idProgres", proposal.proposal.id)
+        props.navigation.navigate('ViewProgress', { idProgress: proposal.proposal.id })
+    }, [])
+
+    const renderHiddenItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>) => (
         <View style={styles.rowBack}>
             <TouchableOpacity
                 style={[styles.backLeftBtn, styles.backLeftBtnLeft]}
                 onPress={navigateToUpdate}
             >
                 <Text style={styles.backTextWhite}>Update</Text>
-            </TouchableOpacity>  
+            </TouchableOpacity>
             <TouchableOpacity
                 style={[styles.backLeftBtn, styles.backLeftBtnRight]}
-                // onPress={() => closeRow(rowMap, item.proposal.id)}
+                onPress={navigateToView(item)}
             >
                 <Text style={styles.backTextWhite}>View</Text>
-            </TouchableOpacity>     
+            </TouchableOpacity>
 
 
             {/* <TouchableOpacity
@@ -73,12 +84,12 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
             </TouchableOpacity> */}
             <TouchableOpacity
                 style={[styles.backRightBtn, styles.backRightBtnRight]}
-                // onPress={() => deleteRow(rowMap, data.item.key)}
+            // onPress={() => deleteRow(rowMap, data.item.key)}
             >
                 <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
         </View>
-    ),[])
+    ), [])
 
     const keyExtractor = React.useCallback((item: Proposal) => item.proposal.id.toString(), [])
 
@@ -107,6 +118,14 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
             />
             <LazyNavigationScreen>
                 <View style={ProposalStyles.content}>
+                    <SearchBar
+                         round
+                         searchIcon={{ size: 24 }}
+                        //  onChangeText={(text) => searchFilterFunction(text)}
+                        //  onClear={(text) => searchFilterFunction('')}
+                         placeholder="Type Here..."
+                        //  value={search}
+                    />
                     <SwipeListView
                         refreshing={refreshStatus === 'FETCHING'}
                         onRefresh={onRefresh}
@@ -120,7 +139,7 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
                         previewRowKey={'0'}
                         previewOpenValue={-40}
                         previewOpenDelay={3000}
-                        // onRowDidOpen={onRowDidOpen}
+                    // onRowDidOpen={onRowDidOpen}
                     />
                 </View>
             </LazyNavigationScreen>

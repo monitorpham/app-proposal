@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { Dashboard, UpdateProgress, ProposalI, Adding } from '@module';
+import { Dashboard, UpdateProgress, ViewProgress, ProposalI, Adding } from '@module';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +13,8 @@ export type DashboardStackParams = {
     Adding: undefined,
     // History: undefined,
     Proposal: undefined,
-    UpdateProgress: undefined
+    UpdateProgress: undefined,
+    ViewProgress: { idProgress: string }
 }
 
 export const DashboardStack: React.FC = () => {
@@ -36,6 +37,10 @@ export const DashboardStack: React.FC = () => {
             <Stack.Screen
                 component={UpdateProgress}
                 name='UpdateProgress'
+            />
+            <Stack.Screen
+                component={ViewProgress}
+                name='ViewProgress'
             />
             <Stack.Screen
                 component={Adding}

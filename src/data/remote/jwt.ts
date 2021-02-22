@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import axios from 'axios';
 
-export default function setAuthorizationToken(token: string) {
+export function setAuthorizationToken(token: string) {
   console.log("######", token)
   if (token != null) {
     // console.log(token)
@@ -40,6 +40,7 @@ export default function setAuthorizationToken(token: string) {
     // delete axios.defaults.headers.common['Authorization'];
   }
 }
+export default axios;
 
 // axios.interceptors.request.use(req => {
 //   // `req` is the Axios request config, so you can modify

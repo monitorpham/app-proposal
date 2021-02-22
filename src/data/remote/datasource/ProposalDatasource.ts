@@ -1,7 +1,9 @@
+import AsyncStorage from '@react-native-community/async-storage';
+import { ViewProgress } from '@module';
 import { EUser } from './../../dto/enitty/EUser';
 import { ApiProvider } from '../Provider';
 import { ApiResult, Result } from '../ApiResult';
-import { EProposal,PostProposalBody,EHospitalDepartment } from '../../dto';
+import { EProposal,PostProposalBody,EHospitalDepartment, EProgress } from '../../dto';
 import { HospitalDepartment, User } from '../../model';
 import moment from 'moment';
 
@@ -14,6 +16,7 @@ export class ProposalDatasource {
 
     async allProposals(): Promise<Result> {
         try {
+            const token = AsyncStorage.getItem('jwtToken');
             const url = `proposals-data-table`
             const response = await this.provider.get<ApiResult<EProposal[]>>(url, {
                 headers: {
@@ -110,6 +113,22 @@ export class ProposalDatasource {
         }
     }
 
+    async getProgress(id:string): Promise<Result> {
+        try {
+            const url = `get-All-ProgressDetail-By-ProposalId?id=${id}`
+            const response = await this.provider.get<ApiResult<EProgress[]>>(url, {
+                headers: {
+                    'Authorization': `Bearer ${'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGgiOiJST0xFX0FETUlOLFJPTEVfVVNFUiIsImV4cCI6MTYxNDEyOTMwNX0.QK5L-5DJ3jpumWFqLFa_7MoeCGhgo1NirzJr2WCJTIymDjYvH9uayHF2bD1vUknN8PwqB3h9TpyTPHhNKDHwqw'}`
+                }
+            })
+            console.log("view progress", response)
+            return Result.fromAxiosResponse(response.data, response)
+
+        } catch (error) {
+            return error
+        }
+    }
+    
     // result.data.map(function(item, i){
         //     console.log('test',item);
         //     // return <li key={i}>Test</li>

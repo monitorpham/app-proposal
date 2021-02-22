@@ -15,16 +15,16 @@ export class Progress {
     }
 
     id: string;
-    startDate: null;
-    endDate: null;
+    startDate: string;
+    endDate: string;
     performBy: string;
     progress: string;
     note: string
 
     constructor(
         id: string,
-        startDate: null,
-        endDate: null,
+        startDate: string,
+        endDate: string,
         performBy: string,
         progress: string,
         note: string

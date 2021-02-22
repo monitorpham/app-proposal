@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text,ListRenderItemInfo } from 'react-native'
+import { View, Text, ListRenderItemInfo } from 'react-native'
+import moment from 'moment'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Header, DatePicker, TimePicker, TextView, ValuePicker, Button, InputField, FetchStatusFullScreenIndicator, KeyValuePair, InputFieldNumber } from '@component'
-import { useUpdateProgress } from './UpdateProgress.store'
-import { UpdateProgressProps } from './UpdateProgress.type'
-import { UpdateProgressStyles } from './UpdateProgress.style'
+import { useViewProgress } from './ViewProgress.store'
+import { ViewProgressProps } from './ViewProgress.type'
+import { ViewProgressStyles } from './ViewProgress.style'
 import { AssetIcons } from '@assets'
 import { Divider } from 'react-native-elements'
 import { SizeDimens } from '@res'
@@ -14,15 +15,16 @@ import { StringUtils } from '@util'
 import { LazyNavigationScreen } from '@layout'
 
 import Timeline from 'react-native-timeline-flatlist'
+import { Progress } from '@data'
 // import Timeline from 'react-native-just-timeline'
 
-export const UpdateProgress: React.FC<UpdateProgressProps> = (props) => {
-    const [{ hospitalDepartment, userList, createStatus, }, action] = useUpdateProgress()
-    const [{ user, }] = useUser()
-    if (!user) return null
+export const ViewProgress: React.FC<ViewProgressProps> = (props) => {
+    const [{ progress }, action] = useViewProgress()
+    const { idProgress } = props.route.params
 
     React.useEffect(() => {
-        // action.getUserList()
+        action.getProgress(idProgress)
+        // console.log(idProgress)
         return action.reset
     }, [])
 
@@ -32,12 +34,12 @@ export const UpdateProgress: React.FC<UpdateProgressProps> = (props) => {
     //     }
     // }, [licensePlates])
 
-    React.useEffect(() => {
-        if (createStatus === 'SUCCESS') {
-            props.navigation.navigate('Dashboard')
-            action.resetProposal()
-        }
-    }, [createStatus])
+    // React.useEffect(() => {
+    //     if (createStatus === 'SUCCESS') {
+    //         props.navigation.navigate('Dashboard')
+    //         action.resetProposal()
+    //     }
+    // }, [createStatus])
 
     const data = [
         { time: '09:00', title: 'Archery Training', description: 'The Beginner Archery and Beginner Crossbow course does not require you to bring any equipment, since everything you need will be provided for the course. ', circleColor: '#009688', lineColor: '#009688' },
@@ -47,19 +49,30 @@ export const UpdateProgress: React.FC<UpdateProgressProps> = (props) => {
         { time: '16:30', title: 'Go to Fitness center', description: 'Look out for the Best Gym & Fitness Centers around me :)', circleColor: '#009688' }
     ]
 
-    const renderItem = React.useCallback(({ item }: ListRenderItemInfo<Proposal>) => {
+    // const renderView = React.useMemo(() => {
+    //     return (
+    //         time: item.date,
+    //         title: item.awb,
+    //         description: item.status
+    //     )
+    // }, [progress])
+
+    const renderProgress = React.useCallback((progress: Progress) => () => {
         // console.log("aaa", item)
-        return (
-            <ProposalItem
-                proposal={item}
-                // onPress={onItemPress(item)}
-            />
-        )
-    }, [])
+        console.log("progress")
+        return {
+            // time: '09:00', title: 'Archery Training', description: 'The Beginner Archery and Beginner Crossbow course does not require you to bring any equipment, since everything you need will be provided for the course. ', circleColor: '#009688', lineColor: '#009688' 
+
+                time: moment(progress.endDate).format('DD/MM/YYYY'),
+                title: progress.progress,
+                description: progress.note
+    
+            }
+    }, [progress])
 
     return (
-        <View style={UpdateProgressStyles.container}>
-            <FetchStatusFullScreenIndicator trackStatuses={[createStatus]} />
+        <View style={ViewProgressStyles.container}>
+            {/* <FetchStatusFullScreenIndicator trackStatuses={[createStatus]} /> */}
             <Header
                 leftActions={[
                     {
@@ -67,13 +80,13 @@ export const UpdateProgress: React.FC<UpdateProgressProps> = (props) => {
                         onPress: props.navigation.goBack
                     }
                 ]}
-                title='Cập nhật đề nghị'
+                title='Tiến trình đề nghị'
             />
             <LazyNavigationScreen indicatorType='NONE'>
-                <KeyboardAwareScrollView contentContainerStyle={UpdateProgressStyles.content}>
+                <KeyboardAwareScrollView contentContainerStyle={ViewProgressStyles.content}>
                     <Timeline
-                        style={UpdateProgressStyles.list}
-                        data={data}
+                        style={ViewProgressStyles.list}
+                        data={renderProgress}
                         circleSize={20}
                         circleColor='rgb(45,156,219)'
                         lineColor='rgb(45,156,219)'

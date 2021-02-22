@@ -12,3 +12,6 @@ export * from './history'
 export * from './password-change'
 export * from './proposal-data'
 export * from './update-progress'
+export * from './view-progress'
+
+

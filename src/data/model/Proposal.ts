@@ -6,6 +6,7 @@ export class Proposal {
     static fromDto(dto: EProposal): Proposal {
         return new Proposal(
             dto.id,
+            dto.progressDetailId,
             dto.contentProposal,
             dto.Group,
             dto.startDate,
@@ -25,6 +26,7 @@ export class Proposal {
     }
 
     id: string;
+    progressDetailId: string;
     contentProposal: string;
     Group: string;
     startDate: string;
@@ -43,6 +45,7 @@ export class Proposal {
 
     constructor(
         id: string,
+        progressDetailId: string,
         contentProposal: string,
         Group: string,
         startDate: string,
@@ -61,6 +64,7 @@ export class Proposal {
     ) {
 
         this.id = id
+        this.progressDetailId = progressDetailId
         this.contentProposal = contentProposal
         this.Group = Group
         this.startDate = startDate

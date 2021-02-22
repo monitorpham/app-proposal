@@ -1,7 +1,7 @@
 export interface EProgress {
     id: string;
-    startDate: null;
-    endDate: null;
+    startDate: string;
+    endDate: string;
     performBy: string;
     progress: string;
     note: string

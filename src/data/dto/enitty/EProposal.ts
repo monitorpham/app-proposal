@@ -1,5 +1,6 @@
 export interface EProposal {
     id: string;
+    progressDetailId:string;
     contentProposal: string;
     Group: string;
     startDate: string;
