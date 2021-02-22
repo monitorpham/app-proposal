@@ -23,6 +23,12 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
     const [{ refreshStatus, proposals }, action] = useProposal()
     const [{ user }] = useUser()
     // console.log('user',user)
+
+
+    const [search, setSearch] = React.useState('');
+    const [filteredDataSource, setFilteredDataSource] = React.useState([]);
+    const [masterDataSource, setMasterDataSource] = React.useState([]);
+
     React.useEffect(() => {
         console.log(user)
         // if (user) return
@@ -105,6 +111,30 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
         console.log('This row opened', rowKey);
     };
 
+    const searchFilterFunction = React.useCallback((proposal: Proposal) => () => {
+        // Check if searched text is not blank
+        if (text) {
+            // Inserted text is not blank
+            // Filter the masterDataSource
+            // Update FilteredDataSource
+            const newData = masterDataSource.filter(function (item) {
+                const itemData = item.title
+                    ? item.title.toUpperCase()
+                    : ''.toUpperCase();
+                const textData = text.toUpperCase();
+                return itemData.indexOf(textData) > -1;
+            });
+            setFilteredDataSource(newData);
+            setSearch(text);
+        } else {
+            // Inserted text is blank
+            // Update FilteredDataSource with masterDataSource
+            setFilteredDataSource(masterDataSource);
+            setSearch(text);
+        }
+    };
+
+
     return (
         <View style={ProposalStyles.container}>
             <Header
@@ -119,12 +149,12 @@ export const ProposalI: React.FC<ProposalProps> = (props) => {
             <LazyNavigationScreen>
                 <View style={ProposalStyles.content}>
                     <SearchBar
-                         round
-                         searchIcon={{ size: 24 }}
-                        //  onChangeText={(text) => searchFilterFunction(text)}
-                        //  onClear={(text) => searchFilterFunction('')}
-                         placeholder="Type Here..."
-                        //  value={search}
+                        round
+                        searchIcon={{ size: 24 }}
+                        onChangeText={(text) => searchFilterFunction(text)}
+                        onClear={(text) => searchFilterFunction('')}
+                        placeholder="Type Here..."
+                        value={search}
                     />
                     <SwipeListView
                         refreshing={refreshStatus === 'FETCHING'}
